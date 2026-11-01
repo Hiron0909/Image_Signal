@@ -1,0 +1,665 @@
+# Experiment No: 01
+
+**Experiment Name:** Display Following Image Operations in MATLAB/Python – (i) Histogram Image (ii) Low-Pass Filter Image (iii) High-Pass Image.
+
+## Theory:
+
+Digital Image Processing is a technique of performing different operations on digital images to improve their quality, extract useful information, and analyze their features. An image consists of pixels, and each pixel contains an intensity value. In a grayscale image, pixel intensity values generally range from 0 to 255, where 0 represents black, 255 represents white, and the values in between represent different shades of gray. Histogram analysis and spatial filtering are important techniques used in digital image processing.
+
+**i) Histogram Image:**
+
+An image histogram is a graphical representation of the distribution of pixel intensity values in an image. It shows how many pixels have a particular intensity level. The horizontal axis represents pixel intensity values, while the vertical axis represents the number of pixels corresponding to each intensity value.
+
+A histogram provides useful information about the brightness and contrast of an image. For example, if most pixel values are concentrated near the lower intensity range, the image may appear dark. Similarly, if most values are concentrated near the higher intensity range, the image may appear bright. A widely distributed histogram generally indicates a broader range of intensity values and potentially better contrast.
+
+Histogram analysis is widely used in image enhancement, contrast adjustment, image analysis, and object detection. It helps us understand the overall intensity distribution of an image before applying further processing techniques.
+
+**ii) Low-Pass Filter Image:**
+
+A low-pass filter is a spatial filtering technique that allows low-frequency components of an image to pass while reducing high-frequency components. Low-frequency components generally represent slowly changing intensity regions, such as smooth backgrounds and large uniform areas. High-frequency components usually represent sharp edges, fine details, and noise.
+
+The main purpose of a low-pass filter is to smooth an image and reduce unwanted noise. Mean filtering and Gaussian filtering are common examples of low-pass filters. A Mean Filter replaces each pixel with the average intensity value of its neighboring pixels. A Gaussian Filter uses a weighted average, where pixels closer to the center receive greater importance.
+
+Low-pass filtering is useful for noise reduction and image preprocessing. However, excessive smoothing may blur object boundaries and remove important fine details.
+
+**iii) High-Pass Filter Image:**
+
+A high-pass filter is used to emphasize high-frequency components of an image while reducing slowly varying intensity components. It highlights sudden changes in pixel intensity, which commonly occur around object boundaries, edges, and fine structures.
+
+High-pass filtering is mainly used for edge enhancement and image sharpening. It makes important details more visible by emphasizing intensity variations between neighboring pixels. A Laplacian filter is a common example of a high-pass filter.
+
+Unlike low-pass filtering, which produces a smoother image, high-pass filtering emphasizes sharp transitions and fine details. However, it may also enhance unwanted noise because noise often contains high-frequency components.
+
+Overall, histogram analysis, low-pass filtering, and high-pass filtering are important image processing operations. They help analyze image intensity distribution, reduce noise, and enhance important image details.
+
+
+--------------------------------------------------
+
+
+# Experiment No: 02
+
+**Experiment Name:** Write a MATLAB/Python Program to Read 'rice.tif' Image, Count Number of Rice and Display Area (Also Specific Range), Major Axis Length, and Perimeter.
+
+## Theory:
+
+Digital Image Processing is widely used in object detection, measurement, counting, and classification. It allows a computer to identify different objects in an image and extract useful information about their shape and size. In this experiment, image processing techniques are applied to the rice.tif image to detect individual rice grains and measure their geometric properties.
+
+First, the input image is read and converted into a grayscale image if it is not already in grayscale format. Grayscale conversion simplifies image processing by representing each pixel with a single intensity value instead of three color components. After that, thresholding is applied to convert the grayscale image into a binary image.
+
+A binary image contains only two intensity values: black (0) and white (255). In this experiment, rice grains are represented as foreground objects, while the background is represented by the opposite intensity value. Otsu's thresholding method can automatically determine a suitable threshold value by analyzing the intensity distribution of the image.
+
+After thresholding, small unwanted noise may be removed using morphological operations such as opening. This helps improve the separation of rice grains from the background. Connected Component Labeling is then applied to identify individual rice grains. Each separate connected region receives a unique label, which makes it possible to count the total number of detected grains.
+
+Several important geometric properties can be measured from each detected rice grain:
+
+**1. Area:**
+
+Area represents the total number of pixels occupied by a rice grain in the binary image. It provides information about the size of each grain. A larger area generally indicates a larger rice grain, while a smaller area indicates a smaller grain.
+
+**2. Specific Area Range:**
+
+Specific area range is used to select rice grains according to their area. A minimum and maximum area value are defined, and only grains whose areas fall within this range are selected. This technique helps separate grains based on their sizes and remove very small unwanted regions.
+
+**3. Major Axis Length:**
+
+Major axis length represents the length of the longest axis of an ellipse having the same normalized second central moments as the detected rice grain. It provides an estimation of the grain's length and is particularly useful because rice grains generally have an elongated shape.
+
+**4. Perimeter:**
+
+Perimeter represents the total length of the boundary surrounding a rice grain. It provides information about the outer shape and boundary of the object. It can be useful for analyzing the shape and physical characteristics of rice grains.
+
+These measurements are important in agricultural image processing, particularly for automatic grain counting, grain size estimation, quality assessment, and classification. By using image processing techniques, these tasks can be performed more efficiently and consistently than manual measurement.
+
+
+--------------------------------------------------
+
+
+# Experiment No: 03
+
+**Experiment Name:** Perform Convolution on an Image Using a 3×3 Mask in MATLAB/Python.
+
+## Theory:
+
+Convolution is one of the fundamental operations in Digital Image Processing. It is used to modify an image by applying a small matrix known as a mask, kernel, or filter. Convolution plays an important role in image enhancement, smoothing, sharpening, edge detection, and noise reduction.
+
+A digital image consists of pixels arranged in rows and columns. During convolution, a small matrix is moved across the image, and mathematical operations are performed between the mask elements and the corresponding image pixel values.
+
+In this experiment, a 3×3 mask is used. A 3×3 mask contains nine elements arranged in three rows and three columns. Initially, the mask is placed over a small region of the image. Each mask element is multiplied by its corresponding image pixel value. All the multiplication results are then added together to calculate a new output pixel value.
+
+After calculating the output value for one position, the mask moves to the next pixel position. This process continues until the entire image has been processed. As a result, a new image is generated based on the values of the selected mask.
+
+The effect of convolution depends mainly on the values present in the mask. Different masks produce different image processing effects.
+
+For example, a smoothing mask uses positive values to calculate an average of neighboring pixels. This reduces small intensity variations and makes the image smoother. A sharpening mask emphasizes differences between neighboring pixels and improves the visibility of fine details. Similarly, edge detection masks highlight sudden changes in intensity around object boundaries.
+
+In this experiment, the 3×3 mask contains positive and negative values arranged to emphasize intensity changes in the image. Therefore, the output highlights important details and boundaries rather than simply producing an averaged image.
+
+Convolution is widely used in computer vision, image enhancement, feature extraction, and deep learning. It provides an efficient way to extract local information from an image and is one of the basic operations used in Convolutional Neural Networks (CNNs).
+
+
+--------------------------------------------------
+
+
+# Experiment No: 04
+
+**Experiment Name:** Apply a Laplacian Filter Mask to an Image Using MATLAB/Python.
+
+## Theory:
+
+The Laplacian filter is an important spatial filtering technique used in Digital Image Processing for edge detection and image sharpening. It is a second-order derivative operator that identifies rapid changes in image intensity. These changes usually occur around object boundaries, edges, and fine details.
+
+In a digital image, smooth regions generally contain slowly changing pixel intensity values. On the other hand, edges represent locations where pixel intensity changes rapidly over a short distance. The Laplacian operator detects these changes by examining the second-order intensity variations in an image.
+
+Unlike first-order derivative operators such as Sobel and Prewitt, which calculate intensity changes in horizontal and vertical directions, the Laplacian operator combines second-order changes in both directions. Therefore, it can detect edges regardless of their orientation.
+
+In digital image processing, the Laplacian filter is implemented using a small convolution mask, commonly a 3×3 matrix. One commonly used Laplacian mask is:
+
+0  -1   0
+-1  4  -1
+0  -1   0
+
+During filtering, the mask moves across the image. Each mask value is multiplied by the corresponding image pixel value, and the results are added to produce a new output pixel. This process is repeated throughout the image.
+
+Regions with nearly uniform intensity produce relatively small responses, while regions with sudden intensity changes produce stronger responses. As a result, edges and fine details become more noticeable in the filtered image.
+
+The Laplacian filter has two major applications:
+
+**1. Edge Detection:**
+
+It identifies boundaries between different regions by detecting rapid changes in pixel intensity. This helps separate objects from their backgrounds and extract important structural information.
+
+**2. Image Sharpening:**
+
+The Laplacian response can be combined with the original image to enhance edges and fine details. This improves the apparent sharpness of an image.
+
+One important limitation of the Laplacian filter is its sensitivity to noise. Since noise may also create sudden intensity variations, it can produce unwanted responses during filtering. Therefore, a smoothing filter such as Gaussian filtering may be applied before Laplacian filtering to reduce noise.
+
+The Laplacian filter is widely used in image enhancement, edge detection, object boundary analysis, and computer vision applications.
+
+
+--------------------------------------------------
+
+
+# Experiment No: 05
+
+**Experiment Name:** Character Segmentation of an Image Using MATLAB/Python.
+
+## Theory:
+
+Character Segmentation is an important process in Digital Image Processing and Optical Character Recognition (OCR). It refers to the process of separating individual characters from a text-containing image so that each character can be processed and recognized independently.
+
+When a computer receives an image containing text, it initially treats the entire image as a collection of pixels. It cannot directly understand which pixels represent individual letters or numbers. Therefore, character segmentation is performed to identify the boundaries of individual characters and separate them from the surrounding background.
+
+The segmentation process generally starts by reading the input image and converting it into grayscale format. Grayscale conversion simplifies the image by representing each pixel with a single intensity value.
+
+After grayscale conversion, thresholding is applied to produce a binary image. In a binary image, foreground text and background regions are represented using two different intensity values. Depending on the thresholding method, characters may appear white on a black background or black on a white background.
+
+Next, noise removal is performed if necessary. Small unwanted pixel regions may appear due to poor image quality, scanning errors, or background noise. These unwanted regions can affect the segmentation process, so they are removed using suitable image processing techniques.
+
+After preprocessing, Connected Component Labeling is used to identify separate connected regions in the binary image. Each connected region is assigned a unique label. Since individual characters generally form separate connected components, this technique helps identify and extract individual characters.
+
+The boundary information of each connected component is used to determine its position and dimensions. A bounding box is created around each detected character using its left position, top position, width, and height. The corresponding image region is then cropped to obtain the individual character.
+
+Finally, the extracted characters are arranged according to their original positions, generally from left to right, and displayed separately.
+
+Character segmentation is an essential stage of OCR systems. It is widely used in handwritten text recognition, printed document processing, automatic number plate recognition, postal address reading, and digit recognition.
+
+The accuracy of character segmentation depends on several factors, including image resolution, character spacing, font style, background noise, and the quality of thresholding. Closely connected characters or overlapping text may make segmentation more difficult.
+
+
+--------------------------------------------------
+
+
+# Experiment No: 06
+
+**Experiment Name:** Edge Detection Using Different Operators and Comparison of Results in MATLAB/Python.
+
+## Theory:
+
+Edge Detection is one of the most important techniques in Digital Image Processing. It is used to identify the boundaries of objects and regions within an image. An edge represents a sudden change in pixel intensity, which usually occurs where one object meets another object or the background.
+
+Edges contain important structural information about an image. They help identify object shapes, boundaries, corners, and fine details. Edge detection reduces the amount of image information that needs to be analyzed while preserving important structural features.
+
+In digital images, edge detection is generally performed by calculating the intensity changes between neighboring pixels. Different mathematical operators use different methods to identify these changes.
+
+Several edge detection operators are commonly used:
+
+**1. Sobel Operator:**
+
+The Sobel operator is a gradient-based edge detection technique. It uses two 3×3 convolution masks to calculate intensity changes in horizontal and vertical directions. One mask detects horizontal intensity variations, while the other detects vertical intensity variations.
+
+The two gradient components are combined to estimate the overall edge strength. The Sobel operator is relatively simple and provides good edge detection results. It also performs some smoothing because of the structure of its masks, making it less sensitive to noise than some simpler gradient operators.
+
+However, the detected edges may sometimes appear thicker than the actual boundaries.
+
+**2. Prewitt Operator:**
+
+The Prewitt operator is another gradient-based edge detection technique. It uses two separate masks to detect horizontal and vertical edges.
+
+The horizontal mask identifies intensity changes along the horizontal direction, while the vertical mask identifies changes along the vertical direction. The two responses are combined to determine the overall edge strength.
+
+The Prewitt operator is simple, computationally efficient, and easy to implement. It is useful for detecting basic object boundaries. However, it is relatively sensitive to noise and may produce less accurate results in images containing significant unwanted variations.
+
+**3. Roberts Operator:**
+
+The Roberts operator is a simple edge detection technique that uses two 2×2 masks to detect intensity changes along diagonal directions.
+
+It calculates differences between diagonally neighboring pixels to identify edges. Because it uses very small masks, it can detect fine details and respond quickly to intensity changes.
+
+However, the small mask size makes the Roberts operator highly sensitive to noise. Therefore, it may produce unwanted edges in noisy images.
+
+**4. Canny Edge Detector:**
+
+The Canny edge detector is a more advanced edge detection method designed to produce thin, clear, and well-defined edges.
+
+It generally consists of several processing steps:
+
+- Noise Reduction: A Gaussian filter is applied to reduce unwanted noise before edge detection.
+- Gradient Calculation: The intensity gradient is calculated to identify possible edge locations and directions.
+- Non-Maximum Suppression: Unnecessary pixels are removed to make the detected edges thinner.
+- Double Thresholding: Two threshold values are used to classify strong and weak edge pixels.
+- Edge Tracking by Hysteresis: Weak edges connected to strong edges are retained, while unrelated weak edges are removed.
+
+The Canny method generally provides better edge localization and clearer boundaries than basic gradient operators. However, it requires more computational operations.
+
+**Comparison of Edge Detection Operators:**
+
+Sobel: Effective for detecting horizontal and vertical intensity changes, but may produce thicker edges.
+
+Prewitt: Simple and computationally efficient, but sensitive to noise.
+
+Roberts: Useful for detecting fine diagonal edges, but highly sensitive to noise.
+
+Canny: Produces thin and well-defined edges, but requires more computation.
+
+Overall, these operators are useful for extracting important structural information from images. Comparing their outputs helps us understand how different edge detection techniques perform under different image conditions.
+
+
+--------------------------------------------------
+
+
+# Experiment No: 07
+
+**Experiment Name:** Read coins.png, Level All Coins, and Display the Area of All Coins Using MATLAB/Python.
+
+## Theory:
+
+Object Detection and Measurement are important applications of Digital Image Processing. These techniques allow a computer to identify different objects in an image and calculate their geometric properties, such as area, perimeter, position, and size.
+
+In this experiment, image processing techniques are applied to detect individual coins from an input image and calculate the area of each coin. The process involves grayscale conversion, noise reduction, thresholding, contour detection, and object measurement.
+
+First, the input image is read and converted into grayscale. A grayscale image represents each pixel using a single intensity value, which makes further processing easier.
+
+Next, Gaussian Blurring is applied to reduce unwanted noise and small intensity variations. This step helps improve the quality of thresholding and makes object boundaries easier to detect.
+
+After smoothing, thresholding is used to convert the grayscale image into a binary image. The thresholding process separates the coins from the background by assigning different intensity values to foreground and background pixels. Otsu's thresholding method can automatically select a suitable threshold based on the image's intensity distribution.
+
+After obtaining the binary image, contour detection is performed to identify the boundaries of individual coins. A contour is a curve that joins continuous points along the boundary of an object. By detecting external contours, the outer boundaries of separate coins can be identified.
+
+The area of each detected coin is calculated using contour area measurement. Contour area represents the number of square pixels enclosed by the detected boundary. Very small contours can be removed using a minimum area threshold to avoid detecting unwanted noise as coins.
+
+A minimum enclosing circle can also be calculated for each detected coin. It provides an approximate center position and radius of the coin. This information can be used to draw a circle around each detected object and display its measurements.
+
+If coins are tilted or not properly aligned, image rotation or leveling techniques can be used to adjust their orientation. Proper alignment can make further analysis and comparison easier.
+
+Finally, each detected coin is assigned a number, and its calculated area is displayed on the output image. The total number of detected coins is also calculated.
+
+The measured area is expressed in square pixels unless a physical calibration is available. Therefore, pixel-based area should not be directly interpreted as the actual physical area of a coin.
+
+This technique is useful in automatic coin counting, object measurement, industrial inspection, and automated visual analysis systems.
+
+
+--------------------------------------------------
+
+
+# Experiment No: 08
+
+**Experiment Name:** Image Thresholding, Power-Law Contrast Enhancement, and High-Pass Filtering Using MATLAB/Python.
+
+## Theory:
+
+Image Enhancement is an important field of Digital Image Processing that focuses on improving the visual appearance of an image and making important information more noticeable. Different enhancement techniques are used to modify pixel intensity values, improve contrast, separate objects from backgrounds, and highlight important image details.
+
+In this experiment, three important image processing techniques are performed: Image Thresholding, Power-Law Contrast Enhancement, and High-Pass Filtering.
+
+**i) Image Thresholding:**
+
+Image thresholding is a basic image segmentation technique used to separate objects from the background based on pixel intensity values. It converts a grayscale image into a binary image by comparing each pixel intensity with a selected threshold value.
+
+A threshold value is selected, and each pixel is classified according to whether its intensity is above or below that value. Pixels belonging to one intensity range are assigned white (255), while the remaining pixels are assigned black (0).
+
+For example, if the threshold value is 130, pixels with intensity values greater than 130 may be converted to white, while pixels with values equal to or below 130 are converted to black.
+
+Thresholding makes it easier to identify objects and separate important regions from the background. It is commonly used in object detection, character segmentation, document processing, and medical image analysis.
+
+However, the quality of thresholding depends on the image's brightness, contrast, and background conditions. A fixed threshold may not produce good results when the illumination is uneven.
+
+**ii) Power-Law Contrast Enhancement Image:**
+
+Power-law transformation, also known as Gamma Correction, is a nonlinear image enhancement technique used to adjust image brightness and contrast.
+
+It is represented by the equation:
+
+s = c × r^γ
+
+Where:
+s = Output intensity value.
+r = Normalized input intensity value.
+c = Constant.
+γ = Gamma value.
+
+In this transformation, the input intensity values are first normalized to a range between 0 and 1. Then, each normalized pixel value is raised to the power of gamma.
+
+The gamma value controls how the brightness of the image changes. When gamma is less than 1, darker intensity values become relatively brighter. When gamma is greater than 1, the image generally becomes darker. When gamma is equal to 1, the transformation produces no change in intensity values if c is 1.
+
+Power-law transformation is useful for correcting images that appear too dark or too bright. It is also widely used in display systems, image enhancement, and digital photography.
+
+**iii) High-Pass Image:**
+
+High-pass filtering is a spatial filtering technique that emphasizes high-frequency components of an image while reducing slowly varying intensity components.
+
+High-frequency components generally represent sharp edges, object boundaries, and fine details. Low-frequency components represent smooth regions and gradual changes in image intensity.
+
+A common method of producing a high-pass image is to subtract a blurred version of the original image from the original image.
+
+The basic operation can be expressed as:
+
+High-pass Image = Original Image - Blurred Image
+
+In this method, Gaussian blurring is first applied to the grayscale image. The blurred image contains mainly smooth and slowly changing intensity information. By subtracting it from the original image, high-frequency details become more prominent.
+
+High-pass filtering is useful for edge enhancement, sharpening, and highlighting fine image structures. However, it may also emphasize unwanted noise present in the original image.
+
+Overall, thresholding, power-law transformation, and high-pass filtering provide different approaches to image processing. Thresholding separates objects, power-law transformation adjusts brightness and contrast, and high-pass filtering highlights edges and fine details.
+
+
+--------------------------------------------------
+
+
+# Experiment No: 09
+
+**Experiment Name:** Image Enhancement, Smoothing, and Sharpening in the Spatial Domain Using Different Spatial Filters.
+
+## Theory:
+
+Image Enhancement is a digital image processing technique used to improve the visual quality of an image and make important information easier to observe. An image may contain unwanted noise, poor contrast, blurred regions, or unclear boundaries. Image enhancement techniques help reduce these problems and improve the overall appearance of the image.
+
+In Digital Image Processing, image enhancement can be performed in two major domains: spatial domain and frequency domain. In the spatial domain, operations are performed directly on the pixel values of an image. Spatial filtering is one of the most commonly used methods for modifying image characteristics.
+
+Different spatial filters are used for smoothing, noise reduction, contrast enhancement, and sharpening. In this experiment, histogram equalization, Gaussian smoothing, and Laplacian-based sharpening are used to improve image quality.
+
+**i) Image Enhancement:**
+
+Image enhancement aims to improve the visual appearance of an image by adjusting its intensity distribution and contrast.
+
+One commonly used enhancement technique is Histogram Equalization. It redistributes the intensity values of an image to improve contrast. It is particularly useful when the original image has a narrow range of intensity values and appears dull or unclear.
+
+Histogram Equalization uses the cumulative distribution of pixel intensities to map the original intensity values into a wider range. As a result, details in darker and brighter regions may become more visible.
+
+This technique is widely used in medical imaging, satellite images, photography, and general image analysis.
+
+**ii) Image Smoothing:**
+
+Image smoothing is a process used to reduce unwanted noise and small intensity variations in an image. It produces a smoother appearance by replacing each pixel with a value calculated from its neighboring pixels.
+
+Several spatial filters are commonly used for image smoothing.
+
+**Mean Filter:**
+
+The Mean Filter replaces each pixel with the average intensity value of the pixels within a selected neighborhood. It reduces random variations and smooths the image. However, it may blur edges and remove fine details because all neighboring pixels contribute equally to the average.
+
+**Gaussian Filter:**
+
+The Gaussian Filter uses a weighted average based on the Gaussian distribution. Pixels closer to the center of the filter receive greater weights than pixels farther away.
+
+It produces smooth results and is commonly used to reduce Gaussian noise. Compared with a simple mean filter, Gaussian filtering provides more controlled smoothing.
+
+**Median Filter:**
+
+The Median Filter replaces each pixel with the median value of the neighboring pixels. Unlike the mean filter, it does not calculate an average. Instead, it sorts the neighboring intensity values and selects the middle value.
+
+It is particularly effective for removing salt-and-pepper noise while preserving object boundaries better than a mean filter.
+
+**iii) Image Sharpening:**
+
+Image sharpening is used to improve the visibility of edges and fine details in an image. It emphasizes rapid changes in pixel intensity, making object boundaries and small structures appear clearer.
+
+Several techniques are commonly used for image sharpening.
+
+**Laplacian Filter:**
+
+The Laplacian Filter is a second-order derivative filter that detects rapid changes in image intensity. It highlights edges and fine details and can be combined with the original image to produce a sharper output.
+
+**High-Pass Filter:**
+
+A High-Pass Filter emphasizes high-frequency components such as edges and fine details while reducing slowly varying intensity components. It is useful for enhancing image boundaries and improving sharpness.
+
+**Unsharp Masking:**
+
+Unsharp Masking is an image sharpening technique that uses a blurred version of the original image. First, the original image is blurred using a smoothing filter. Then, the blurred image is subtracted from the original image to obtain a detail mask. This detail information is added back to the original image to enhance sharpness.
+
+Overall, spatial domain enhancement techniques are important for improving image quality. Smoothing helps reduce noise, sharpening enhances edges and fine details, and histogram equalization improves contrast. The selection of a suitable filter depends on the type of image and the desired processing result.
+
+
+--------------------------------------------------
+
+
+# Experiment No: 10
+
+**Experiment Name:** Separation of Voiced, Unvoiced, and Silence Regions from a Speech Signal Using MATLAB/Python.
+
+## Theory:
+
+Speech Signal Processing is an important area of Digital Signal Processing (DSP) that focuses on analyzing, processing, and understanding human speech. A speech signal is produced by the movement of air through the vocal system and is captured using a microphone.
+
+A recorded speech signal does not contain only meaningful spoken sounds. It also includes pauses, background noise, and different types of speech sounds. For proper speech analysis, it is important to identify the different regions of a speech signal.
+
+Generally, speech signals consist of three main types of regions: Voiced, Unvoiced, and Silence. These regions can be identified by analyzing important signal characteristics such as Short-Time Energy and Zero-Crossing Rate (ZCR).
+
+**i) Voiced Region:**
+
+Voiced sounds are produced when the vocal cords vibrate during speech production. Examples include vowel sounds such as /a/, /e/, and /i/, as well as some voiced consonants.
+
+Voiced speech generally contains a periodic or approximately periodic waveform because of the regular vibration of the vocal cords. These regions usually have relatively higher energy compared with silence regions.
+
+The waveform of voiced speech often contains repeating patterns, which are useful for identifying its characteristics. Voiced regions are important for understanding speech structure and analyzing the fundamental frequency of human speech.
+
+**ii) Unvoiced Region:**
+
+Unvoiced sounds are produced without regular vibration of the vocal cords. Examples include /s/, /f/, and /sh/.
+
+Unlike voiced speech, unvoiced speech generally has a noise-like and irregular waveform. It usually contains less periodic structure and often has a higher Zero-Crossing Rate than voiced speech.
+
+Unvoiced sounds are important components of spoken language because they help distinguish different words and pronunciation patterns.
+
+**iii) Silence Region:**
+
+Silence refers to the portions of a speech signal where no significant speech activity is present. These regions may occur before, after, or between spoken words.
+
+Silence regions generally contain very low signal energy. However, in practical recordings, they may still contain background noise or microphone noise.
+
+Identifying silence regions is important for separating active speech from pauses and reducing unnecessary audio information during speech processing.
+
+**iv) Short-Time Energy:**
+
+Short-Time Energy measures the energy of a speech signal over a short time interval or frame. Instead of analyzing the entire speech signal at once, the signal is divided into smaller frames, and the energy of each frame is calculated.
+
+Short-Time Energy helps distinguish silence from active speech. Silence regions generally have very low energy, while voiced and unvoiced speech regions usually contain higher energy.
+
+Therefore, energy-based analysis is commonly used in Voice Activity Detection (VAD) and speech segmentation.
+
+**v) Zero-Crossing Rate (ZCR):**
+
+Zero-Crossing Rate measures how frequently a speech waveform changes its sign from positive to negative or negative to positive within a specific frame.
+
+Voiced speech generally has a lower Zero-Crossing Rate because its waveform is more periodic. Unvoiced speech often has a higher Zero-Crossing Rate because its waveform is more irregular and noise-like.
+
+ZCR is useful for distinguishing voiced and unvoiced speech, especially when combined with Short-Time Energy.
+
+**Separation of Speech Regions:**
+
+In this experiment, the speech signal is divided into short frames. Short-Time Energy and Zero-Crossing Rate are calculated for each frame. Based on selected threshold values, each frame is classified as voiced, unvoiced, or silence.
+
+Frames with very low energy are generally classified as silence. Frames with sufficient energy and relatively low ZCR are classified as voiced, while frames with higher ZCR are classified as unvoiced.
+
+The classification depends on the selected thresholds and the characteristics of the recorded speech signal. By combining these two features, different speech regions can be separated and visualized.
+
+This technique is widely used in speech recognition, speech compression, voice activity detection, speaker analysis, and other speech processing applications.
+
+
+--------------------------------------------------
+
+
+# Experiment No: 11
+
+**Experiment Name:** Write a MATLAB/Python Program and Plot Multilevel Speech Resolution.
+
+## Theory:
+
+Digital Speech Processing is the process of representing and analyzing speech signals using digital techniques. Human speech is naturally produced as an analog signal, which means its amplitude changes continuously over time. However, computers process information in digital form. Therefore, an analog speech signal must be converted into digital values before it can be stored, processed, or transmitted by a computer.
+
+The conversion of an analog speech signal into a digital signal generally involves sampling and quantization. Sampling converts the continuous-time signal into discrete-time samples, while quantization converts the continuous amplitude values into a finite number of discrete amplitude levels.
+
+Multilevel Speech Resolution refers to representing a speech signal using different numbers of discrete amplitude levels. The number of available levels determines how accurately the original amplitude values can be represented.
+
+**1. Quantization:**
+
+Quantization is the process of mapping each sampled amplitude value to the nearest available discrete amplitude level.
+
+Since a digital system can represent only a finite number of amplitude values, the original continuous amplitude cannot always be represented exactly. Therefore, a small difference may occur between the original sample value and the quantized value. This difference is known as Quantization Error.
+
+The number of quantization levels determines the accuracy of the digital representation. A higher number of levels generally provides better amplitude accuracy, while a lower number of levels produces greater quantization error and distortion.
+
+**2. Number of Quantization Levels:**
+
+The number of quantization levels depends on the number of bits used to represent each sample.
+
+It is calculated using the equation:
+
+L = 2^b
+
+Where:
+L = Number of quantization levels.
+b = Number of bits per sample.
+
+For example:
+
+2 bits = 4 quantization levels.
+4 bits = 16 quantization levels.
+8 bits = 256 quantization levels.
+
+This means that increasing the number of bits increases the number of available amplitude levels and improves the resolution of the digital signal.
+
+**3. Uniform Quantization:**
+
+Uniform Quantization divides the entire amplitude range of a signal into equally spaced intervals. Each input sample is assigned to the nearest available quantization level.
+
+The distance between two consecutive quantization levels is called the Quantization Step Size.
+
+It can be calculated using:
+
+Δ = (x_max - x_min) / L
+
+Where:
+Δ = Quantization step size.
+x_max = Maximum signal amplitude.
+x_min = Minimum signal amplitude.
+L = Number of quantization levels.
+
+When the number of levels increases, the step size becomes smaller. As a result, the quantized signal can represent the original amplitude values more accurately.
+
+**4. Quantization Error and Speech Quality:**
+
+Quantization Error is the difference between the original sample value and its corresponding quantized value.
+
+When fewer quantization levels are used, the difference between the original and quantized amplitudes may become larger. This can introduce distortion into the reconstructed speech signal.
+
+For example, a speech signal represented using only 2 quantization levels will have a rough amplitude representation. In contrast, a signal represented using 16 or more levels will generally follow the original waveform more closely.
+
+Higher quantization resolution generally improves signal quality but requires more bits to represent each sample. Therefore, there is a trade-off between speech quality, storage requirements, and data transmission rate.
+
+**Multilevel Speech Resolution:**
+
+In this experiment, the original speech signal is first read and normalized. Then, the signal is quantized using different numbers of quantization levels, such as 2, 4, 8, and 16 levels.
+
+The original and quantized speech signals are plotted separately for comparison. By observing the waveforms, the effect of different quantization levels can be understood.
+
+A higher number of quantization levels produces a waveform that is closer to the original speech signal, whereas a lower number of levels produces greater amplitude distortion.
+
+Multilevel quantization is widely used in digital audio processing, speech communication, audio recording, and digital signal transmission systems.
+
+
+--------------------------------------------------
+
+
+# Experiment No: 12
+
+**Experiment Name:** Speech Signal Recognition Using MATLAB/Python.
+
+## Theory:
+
+Speech Recognition is a technology that enables a computer to identify spoken words and convert them into written text. It is an important application of Digital Signal Processing (DSP), Artificial Intelligence (AI), and Machine Learning.
+
+Human speech contains different sound patterns that represent words and sentences. A speech recognition system analyzes these sound patterns and determines which words are most likely to have been spoken.
+
+The main purpose of a speech recognition system is to establish communication between humans and computers through voice input. Instead of typing text using a keyboard, users can speak naturally, and the computer converts their speech into text.
+
+The speech recognition process generally consists of several important stages.
+
+**1. Speech Acquisition:**
+
+Speech acquisition is the first stage of speech recognition. In this stage, a speech signal is captured using a microphone or loaded from a previously recorded audio file.
+
+The microphone converts sound waves into an electrical signal, which is then converted into digital samples for computer processing. The quality of the recorded speech plays an important role in recognition accuracy.
+
+**2. Preprocessing:**
+
+Preprocessing is performed to improve the quality of the recorded speech signal before recognition.
+
+The recorded signal may contain background noise, unwanted silence, or other disturbances. Preprocessing techniques help reduce these unwanted components and prepare the signal for further analysis.
+
+Common preprocessing operations include noise reduction, silence removal, normalization, and audio segmentation.
+
+**3. Feature Extraction:**
+
+Feature extraction is the process of identifying important characteristics of a speech signal. Instead of analyzing every audio sample directly, the system extracts useful features that represent the speech information.
+
+One commonly used feature extraction technique is Mel-Frequency Cepstral Coefficients (MFCC).
+
+MFCC represents the spectral characteristics of speech based on the human auditory system. It provides a compact representation of speech information and is widely used in traditional speech recognition systems.
+
+These extracted features help the recognition model distinguish different speech sounds and word patterns.
+
+**4. Speech Recognition:**
+
+In this stage, the extracted speech information is analyzed by a recognition model to identify the spoken words.
+
+Traditional speech recognition systems use techniques such as Hidden Markov Models (HMM), while modern systems commonly use Machine Learning and Deep Learning approaches.
+
+Modern speech recognition models can learn complex patterns from large speech datasets and recognize words with improved accuracy.
+
+**5. Text Output:**
+
+After identifying the spoken words, the recognition system converts the result into written text. The recognized text can then be displayed on the computer screen or stored in a text file.
+
+**Working Principle:**
+
+In this experiment, a recorded speech file is loaded into a speech recognition system. The audio data is processed and analyzed by the recognition engine. The system then attempts to identify the spoken words and generates the corresponding text output.
+
+The accuracy of speech recognition depends on several factors, including audio quality, background noise, pronunciation, speaking speed, language, and the capability of the recognition model.
+
+Speech recognition technology is widely used in voice assistants, automatic subtitles, voice-controlled applications, automated customer service, and speech-to-text systems.
+
+
+--------------------------------------------------
+
+
+# Experiment No: 13
+
+**Experiment Name:** Text-to-Speech Conversion and Speech Signal Recording Using MATLAB/Python.
+
+## Theory:
+
+Speech Processing is an important application of Digital Signal Processing that deals with the generation, recording, analysis, and reproduction of human speech. Two important applications of speech processing are Text-to-Speech (TTS) conversion and Speech Signal Recording.
+
+Text-to-Speech technology converts written text into spoken audio, while speech recording captures human voice through a microphone and stores it in digital form. Both operations are widely used in modern communication systems, accessibility applications, and computer-based voice technologies.
+
+**1. Text-to-Speech (TTS) Conversion:**
+
+Text-to-Speech (TTS) is a technology that automatically converts written text into spoken audio. It allows a computer or electronic device to read written information aloud using an artificial or synthesized voice.
+
+In a TTS system, the user first provides text as input. The system analyzes the text and generates corresponding speech sounds. A speech synthesis engine then produces an audio signal that represents the input text.
+
+Modern TTS systems may use different speech synthesis techniques, including concatenative synthesis, statistical parametric synthesis, and neural network-based synthesis.
+
+Text-to-Speech technology is useful for people with visual impairments, educational applications, virtual assistants, navigation systems, automated announcements, and accessibility tools.
+
+**2. Speech Signal Recording:**
+
+Speech Signal Recording is the process of capturing human voice through a microphone and converting it into a digital audio signal.
+
+When a person speaks, sound waves travel through the air and reach the microphone. The microphone converts these sound waves into an electrical signal. An audio recording system then converts the signal into digital samples so that it can be stored and processed by a computer.
+
+The conversion of an analog speech signal into digital form involves two important processes: Sampling and Quantization.
+
+Sampling measures the amplitude of the analog signal at regular time intervals. The number of samples taken per second is called the Sampling Rate or Sampling Frequency.
+
+For example, a sampling rate of 16,000 Hz means that 16,000 samples are taken every second. A sampling rate of 44,100 Hz is also commonly used in digital audio recording.
+
+Quantization converts the sampled amplitude values into discrete digital values that can be stored in a computer.
+
+After recording, the digital speech signal can be saved in an audio file format such as WAV. The recorded file can then be played, analyzed, edited, or used for further speech processing applications.
+
+**3. Main Operations of the Experiment:**
+
+The experiment consists of two main operations.
+
+**Text-to-Speech Conversion:**
+
+First, a text string is provided as input to the Text-to-Speech engine. The engine processes the text and generates the corresponding speech signal. The generated speech can be played through the computer's audio output and saved as an audio file for future use.
+
+**Speech Signal Recording:**
+
+In speech recording, the microphone captures the user's voice and converts it into digital audio data. The recorded speech is stored in an audio file, which can later be played or used for further processing.
+
+Overall, Text-to-Speech conversion and Speech Signal Recording are important technologies in digital speech processing. TTS converts written information into spoken language, while speech recording converts human voice into digital audio. These technologies are widely used in virtual assistants, communication systems, educational software, accessibility tools, and other voice-based applications.
